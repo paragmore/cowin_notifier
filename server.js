@@ -69,8 +69,8 @@ setInterval(() => {
     if (err) {
       console.log(err);
     } else {
-      data.map((user) => {
-        axios
+      data.map(async (user) => {
+        await axios
           .get(
             `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${user.district}&date=5-05-2021`
           )
@@ -85,7 +85,7 @@ setInterval(() => {
                   console.log(
                     `"${session.min_age_limit}  ${session.available_capacity}   ${center.name},   @ slot ${session.date} `
                   );
-                  console.log(!user.sessionMailed.includes(session.session_id));
+                  // console.log(!user.sessionMailed.includes(session.session_id));
                   if (!user.sessionMailed.includes(session.session_id)) {
                     if (
                       !message.includes(
@@ -127,9 +127,14 @@ setInterval(() => {
                   //       });
                   //     }
                   //   });
+                } else {
+                  // console.log("No vaccine available for < 45");
                 }
               });
             });
+          })
+          .catch((error) => {
+            console.log("api down error");
           });
 
         // console.log(message);
@@ -146,7 +151,7 @@ setInterval(() => {
             if (error) {
               console.log(error);
             } else {
-              // console.log("Email sent: " + info.response);
+              console.log("Email sent: " + info.response);
               Users.findByIdAndUpdate(
                 user._id,
                 {
@@ -166,4 +171,4 @@ setInterval(() => {
       });
     }
   });
-}, 10000);
+}, 180000);
