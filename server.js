@@ -82,10 +82,10 @@ setInterval(() => {
                   session.available_capacity !== null &&
                   session.min_age_limit < 45
                 ) {
-                  // console.log(
-                  //   `"${session.min_age_limit}  ${session.available_capacity}   ${center.name},   @ slot ${session.date} `
-                  // );
-                  // console.log(!user.sessionMailed.includes(session.session_id));
+                  console.log(
+                    `"${session.min_age_limit}  ${session.available_capacity}   ${center.name},   @ slot ${session.date} `
+                  );
+                  console.log(!user.sessionMailed.includes(session.session_id));
                   if (!user.sessionMailed.includes(session.session_id)) {
                     if (
                       !message.includes(
