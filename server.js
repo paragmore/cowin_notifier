@@ -72,7 +72,7 @@ setInterval(() => {
       data.map(async (user) => {
         await axios
           .get(
-            `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${user.district}&date=5-05-2021`
+            `https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=${user.district}&date=7-05-2021`
           )
           .then((res) => {
             res.data.centers.map((center) => {
